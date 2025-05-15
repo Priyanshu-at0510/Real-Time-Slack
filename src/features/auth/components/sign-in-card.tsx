@@ -8,7 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@radix-ui/react-separator";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-export const SignInCard=()=>{
+import { SignInFlow } from "../types";
+interface SignInCardProps{
+  setState :(state:SignInFlow)=>void;
+};
+export const SignInCard=({setState}:SignInCardProps)=>{
     return(
       <Card className="w-full h-full p-8">
         <CardHeader className="px-0 pt-0">
@@ -55,6 +59,9 @@ export const SignInCard=()=>{
               Continue with GitHub
             </Button>
           </div>
+          <p className="text-xs text-muted-foreground">
+             Don&apos;t have an account?<span onClick={()=>setState("signUp")} className="text-sky-700 hover:underline cursor-pointer ml-0.5">Sign Up</span>
+          </p>
         </CardContent>
       </Card>
     );
